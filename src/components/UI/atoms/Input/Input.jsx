@@ -21,9 +21,9 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-    formControlName: 'Generic',
+    formControlName: 'Dummy',
     type: 'text',
-    placeholder: 'Write something'
+    placeholder: 'Dummy Input'
 }
 
 export default Input

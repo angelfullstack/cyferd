@@ -1,12 +1,9 @@
 import "typeface-montserrat";
 import Input from './components/UI/atoms/Input/Input'
+import RegisterForm from "./components/UI/organisms/RegisterForm/RegisterForm";
 function App() {
   return <div className="App">
-    <Input 
-      formControlName="username"
-      type="text"
-      placeholder="Write your username"
-    />
+    <RegisterForm />
   </div>;
 }
 
