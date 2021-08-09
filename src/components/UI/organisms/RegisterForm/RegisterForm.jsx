@@ -1,23 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import Button from '../../atoms/Button/Button'
 import { RegisterInputs } from '../../../../constants/FormsConstants'
 import FormControl from '../../molecules/FormControl/FormControl'
 
 const RegisterForm = props => {
-    console.log(RegisterInputs)
     return (
         <div className="register-form">
-            {
-                RegisterInputs.map(input => {
-                    return <FormControl value={input}/>
-                })
-            }
+            <div className="form-group">
+                {
+                    RegisterInputs.map(props => {
+                        return <FormControl key={props.formControlName} {...props}/>
+                    })
+                }
+            </div>
+            <div className="btn-cont">
+                <Button />
+            </div>
         </div>
     )
-}
-
-RegisterForm.propTypes = {
-
 }
 
 export default RegisterForm
