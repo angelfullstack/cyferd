@@ -1,0 +1,15 @@
+@import '../../../../assets/scss/variables';
+
+input{
+    font-family: 'Montserrat', sans-serif;
+    font-size: $font-size-cow;
+    display:block;
+    
+    &[type="text"]{
+        background: $color-white;
+    }
+    
+    &.username{
+        
+    }
+}
