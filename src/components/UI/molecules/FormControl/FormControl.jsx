@@ -11,6 +11,7 @@ const FormControl = ({
   labelTitle,
   linkText,
   link,
+  defaultValue
 }) => {
   return (
         <StyledFormControl
@@ -106,7 +107,9 @@ FormControl.propTypes = {
   labelTitle: PropTypes.string.isRequired,
   placeHolder: PropTypes.string,
   linkText: PropTypes.string,
-  link: PropTypes.string
+  link: PropTypes.string,
+  defaultValue: PropTypes.any,
+  required: PropTypes.bool
 };
 
 FormControl.defaultTypes = {
@@ -114,6 +117,7 @@ FormControl.defaultTypes = {
   type: "text",
   placeholder: "Dummy placeholder",
   labelTitle: "Dummy label",
+  defaultValue: null
 };
 
 export default FormControl;

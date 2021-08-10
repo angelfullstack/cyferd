@@ -3,15 +3,17 @@ import { createGlobalStyle } from 'styled-components';
 import RegisterForm from './components/UI/organisms/RegisterForm/RegisterForm';
 import {variables} from './assets/styled/styled';
 import 'typeface-montserrat';
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 
 function App() {
   return (
     
-      <React.Fragment>
-        <GlobalStyle />
-        <RegisterForm />
-      </React.Fragment>
+        <Provider store={store}>
+          <GlobalStyle />
+          <RegisterForm />
+        </Provider>
     
   );
 }

@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
+import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types'
 import {Styled, variables} from '../../../../assets/styled/styled';
+import { useDispatch } from "react-redux";
 
 
-const Input = ({formControlName, type, icon, placeholder}) => {
+const Input = ({formControlName, type, icon, placeholder, inputValue, required}) => {
+    const {
+      register,
+      handleSubmit,
+      watch,
+      formState: { errors },
+    } = useForm();
+    const [value, setValue] = useState('')
+    const dispatch = useDispatch();
+
+    const onChange = useCallback(
+        (evt) =>{
+            console.log(evt.target.value)
+            dispatch({type: formControlName.toUpperCase(), payload: evt.target.value})
+        },[setValue,inputValue,value]
+    )
     return (
         <StyledInput 
         type={type}
@@ -11,6 +28,8 @@ const Input = ({formControlName, type, icon, placeholder}) => {
         placeholder={placeholder}
         id={formControlName}
         name={formControlName}
+        onChange={onChange}
+        {...register(formControlName, {required: required})}
         />
         )
     }

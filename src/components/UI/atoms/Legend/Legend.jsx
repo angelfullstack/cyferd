@@ -27,7 +27,7 @@ color: ${variables.colorWhite};
 `;
 
 Legend.propTypes = {
-  formControlName: PropTypes.string.isRequired,
+  formControlName: PropTypes.string,
   labelTitle: PropTypes.string.isRequired,
   type: PropTypes.string,
   linkText: PropTypes.string,
