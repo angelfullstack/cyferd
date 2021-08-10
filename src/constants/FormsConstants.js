@@ -32,8 +32,14 @@ export const RegisterInputs = [
   {
     formControlName: "optin",
     type: "checkbox",
-    labelTitle: "I accept conditions",
-    placeHolder: "I accept conditions",
-    linkText: "here"
+    labelTitle: "I accept",
+    placeHolder: "I accept",
+    linkText: " conditions",
+    link: "/conditions"
   },
 ];
+
+export const RegisterButton = {
+    type: "submit",
+    text: "Submit"
+}

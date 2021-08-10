@@ -9,6 +9,6 @@ export default {
 export const ButtonExample = () => (
   <Button
     type="button"
-    name="Button"
+    text="Button"
   />
 );

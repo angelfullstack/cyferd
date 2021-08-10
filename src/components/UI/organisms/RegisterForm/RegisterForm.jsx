@@ -1,11 +1,13 @@
 import React from 'react'
 import Button from '../../atoms/Button/Button'
-import { RegisterInputs } from '../../../../constants/FormsConstants'
+import { RegisterInputs, RegisterButton } from '../../../../constants/FormsConstants'
 import FormControl from '../../molecules/FormControl/FormControl'
+import { Styled, variables } from "../../../../assets/styled/styled";
+
 
 const RegisterForm = props => {
     return (
-        <div className="register-form">
+        <StyledRegisterForm className="register-form">
             <div className="form-group">
                 {
                     RegisterInputs.map(props => {
@@ -14,10 +16,17 @@ const RegisterForm = props => {
                 }
             </div>
             <div className="btn-cont">
-                <Button />
+                <Button 
+                    type={RegisterButton.type}
+                    text={RegisterButton.text}
+                />
             </div>
-        </div>
+        </StyledRegisterForm>
     )
 }
+
+const StyledRegisterForm = Styled.form`
+width:50vw;
+`
 
 export default RegisterForm

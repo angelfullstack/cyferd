@@ -10,6 +10,7 @@ export const InputExample = () => (
   <Input
     formControlName="username"
     type="text"
+    icon="user"
     placeholder="Write your username" 
     />
 );
