@@ -1,22 +1,18 @@
-import  React  from 'react';
-import { createGlobalStyle } from 'styled-components';
-import RegisterForm from './components/UI/organisms/RegisterForm/RegisterForm';
-import {variables} from './assets/styled/styled';
-import 'typeface-montserrat';
-import { Provider } from "react-redux";
-import store from "./store/store";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
+import { variables } from "./assets/styled/styled";
+import "typeface-montserrat";
+import Routes from "./Routes/Routes";
 
-
-function App() {
+const App = (store) => {
   return (
-    
-        <Provider store={store}>
-          <GlobalStyle />
-          <RegisterForm />
-        </Provider>
-    
+    <React.Fragment>
+      <GlobalStyle />
+      <Router>{Routes()}</Router>
+    </React.Fragment>
   );
-}
+};
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,

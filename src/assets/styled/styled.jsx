@@ -8,12 +8,14 @@ export const variables = {
   colorWhite: ` #FAFAFA`,
   colorSuccess: `#A1D3BF`,
   colorDanger: `#9E004F`,
+  colorShadow: `#1C1C1C77`,
 
   fontFamily: `'Montserrat', sans-serif`,
 
   fontSizeHuman: `1rem`,
   fontSizeCow: `1.1rem`,
   fontSizeRhino: `1.6rem`,
+  fontSizeElephant: `5rem`,
 };
 
 export const Styled = styled

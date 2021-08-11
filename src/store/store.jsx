@@ -5,25 +5,30 @@ const initialValue = {
     password_repeat: '',
     birthdate: '',
     age: null,
-    optin: false
+    optin: false,
+    user: {
+      token: null,
+      username: 'pepito'
+    },
     
  };
 
 const reducer = (state = initialValue, action) => {
-  debugger;
   switch (action.type) {
     case "USERNAME":
-      return { ...state, userbane: action.payload };
+      return { ...state, username: action.payload };
     case "PASSWORD":
-      return { ...state, userbane: action.payload };
+      return { ...state, password: action.payload };
     case "PASSWORD_REPEAT":
-      return { ...state, userbane: action.payload };
+      return { ...state, repeat_password: action.payload };
     case "BIRTHDATE":
-      return { ...state, userbane: action.payload };
+      return { ...state, birthdate: action.payload };
     case "AGE":
-      return { ...state, userbane: action.payload };
+      return { ...state, age: action.payload };
     case "OPTIN":
-      return { ...state, userbane: action.payload };
+      return { ...state, optin: action.payload };
+    case "USER":
+      return { ...state, user: action.payload };
     default:
       return state;
   }

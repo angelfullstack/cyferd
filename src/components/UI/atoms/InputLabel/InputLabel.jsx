@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Styled, variables } from "../../../../assets/styled/styled";
 import  Legend from '../Legend/Legend';
 
-const InputLabel = ({ formControlName, type, labelTitle, linkText }) => {
+const InputLabel = ({ formControlName, type, labelTitle, linkText, link }) => {
   return (
     <React.Fragment>
       {type !== "checkbox" ? (
@@ -20,8 +20,9 @@ const InputLabel = ({ formControlName, type, labelTitle, linkText }) => {
             htmlFor={formControlName}
             className={`${formControlName}${type && " " + type}`}
             labelTitle={labelTitle}
-          >
-          </Legend>
+            linkText={linkText}
+            link={link}
+          ></Legend>
         </React.Fragment>
       )}
     </React.Fragment>

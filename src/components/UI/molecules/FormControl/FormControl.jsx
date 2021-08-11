@@ -28,7 +28,6 @@ const FormControl = ({
                 formControlName={formControlName}
                 type={type}
                 placeholder={placeholder}
-                linkText={linkText}
               />
           </React.Fragment>
       ) : (
@@ -37,7 +36,6 @@ const FormControl = ({
                 formControlName={formControlName}
                 type={type}
                 placeholder={placeholder}
-                linkText={linkText}
               />
               <InputLabel
                 formControlName={formControlName}
@@ -45,6 +43,7 @@ const FormControl = ({
                 type={type}
                 className={type}
                 link={link}
+                linkText={linkText}
               />
           </React.Fragment>
       )}
@@ -88,7 +87,7 @@ margin-bottom: 1em;
             width: 1em;
             height: 1em;
             border: 0.1em solid;
-            border-color: ${variables.colorSecondary};
+            border-color: ${variables.colorPrimary};
             background: ${variables.colorWhite};
             border-radius: 0.3em;
             position: absolute;
@@ -97,7 +96,6 @@ margin-bottom: 1em;
             transform: translate(-50%, -50%);
         }
     }
-    input
 }
 `;
 

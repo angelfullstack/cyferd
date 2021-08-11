@@ -1,56 +1,60 @@
-import React, { useState, useCallback } from 'react'
-import { useForm } from "react-hook-form";
-import PropTypes from 'prop-types'
-import {Styled, variables} from '../../../../assets/styled/styled';
-import { useDispatch } from "react-redux";
+import { useForm, useFormContext } from "react-hook-form";
+import PropTypes from "prop-types";
+import { Styled, variables } from "../../../../assets/styled/styled";
+export const ConnectForm = ({ children }) => {
+  const methods = useFormContext();
 
+  return children({ ...methods });
+};
 
-const Input = ({formControlName, type, icon, placeholder, inputValue, required}) => {
-    const {
-      register,
-      handleSubmit,
-      watch,
-      formState: { errors },
-    } = useForm();
-    const [value, setValue] = useState('')
-    const dispatch = useDispatch();
+const Input = ({
+  formControlName,
+  type,
+  icon,
+  placeholder,
+  inputValue,
+  required,
+}) => {
+  const {
+    register,
+    // formState: { errors },
+  } = useForm();
 
-    const onChange = useCallback(
-        (evt) =>{
-            console.log(evt.target.value)
-            dispatch({type: formControlName.toUpperCase(), payload: evt.target.value})
-        },[setValue,inputValue,value]
-    )
-    return (
-        <StyledInput 
-        type={type}
-        className={formControlName}
-        placeholder={placeholder}
-        id={formControlName}
-        name={formControlName}
-        onChange={onChange}
-        {...register(formControlName, {required: required})}
-        />
-        )
-    }
+  const onChange = (
+    (evt) => {
+      console.log(evt.target.value);
     
+    }
+  );
+  return (
+    <StyledInput
+      type={type}
+      className={formControlName}
+      placeholder={placeholder}
+      id={formControlName}
+      name={formControlName}
+      onChange={onChange}
+      innerRef={register(formControlName, { required: "is required" })}
+    />
+  );
+};
+
 Input.propTypes = {
-    formControlName: PropTypes.string.isRequired,  
-    type: PropTypes.string,
-    palceholder: PropTypes.string,
+  formControlName: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  palceholder: PropTypes.string,
 };
 
 Input.defaultProps = {
-    formControlName: 'Dummy',
-    type: 'text',
-    placeholder: 'Dummy Input'
-}
-
+  formControlName: "Dummy",
+  type: "text",
+  placeholder: "Dummy Input",
+};
 
 const StyledInput = Styled.input`
     display: block;
     width: 100%;
-    border: 1px solid ${variables.colorPrimary};
+    border: .1em solid ${variables.colorPrimary};
     border-radius: .25em;
     color: ${variables.colorBlack};
     background-color: ${variables.colorWhite};
@@ -71,4 +75,4 @@ const StyledInput = Styled.input`
         }
     }
 `;
-export default Input
+export default Input;

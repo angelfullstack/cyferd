@@ -6,6 +6,17 @@ export default {
   component: Input,
 };
 
+// eslint-disable-next-line no-unused-vars
+const store = {
+  getState: () => {
+    return {
+      tasks: "DUMMY",
+    };
+  },
+  subscribe: () => 0,
+  dispatch: ("dispatch"),
+};
+
 export const InputExample = () => (
   <Input
     formControlName="username"

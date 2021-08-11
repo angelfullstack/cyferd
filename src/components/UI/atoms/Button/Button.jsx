@@ -1,9 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Styled, variables } from "../../../../assets/styled/styled";
-const handleSubmit = () => {
-    console.log('submit')
-}
 
 const Button = ({ type, text, onClick }) => {
   onClick = () => {
