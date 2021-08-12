@@ -2,11 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Styled, variables } from "../../../../assets/styled/styled";
 
-const Button = ({ type, text, onClick }) => {
+const Button = ({ type, text, onClick , link}) => {
   onClick = () => {
     console.log('Click')
   }  
-  return <StyledButton type={type} onClick={onClick}>{text}</StyledButton>;
+  return (
+    <StyledButton type={type} onClick={onClick}>
+      {link ? <a href={link}>{text}</a> : <span>{ text }</span>}
+    </StyledButton>
+  );
 };
 
 const StyledButton = Styled.button`
@@ -19,8 +23,14 @@ color: ${variables.colorWhite};
 background-color: transparent;
 display: block;
 margin: 0 auto;
+a, a:visited, a:active, span{
+color: inherit;
+text-decoration: inherit;
+
+}
 &:hover{
 background-color: ${variables.colorPrimary};
+color: ${variables.colorWhite}
 }
 &:disabled{
     opacity: .5;
@@ -31,7 +41,7 @@ background-color: ${variables.colorPrimary};
 
 Button.propTypes = {
   type: PropTypes.string,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
 };
 
 Button.defaultProps = {

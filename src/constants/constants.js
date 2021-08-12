@@ -54,3 +54,22 @@ export const RegisterButton = {
     type: "submit",
     text: "Submit"
 }
+
+export const NavBarUserButtons = [
+  {
+    name: "register",
+    type: "button",
+    labelTitle: "Register",
+    text: "Register",
+    link: "/register",
+    title: "Go to login",
+  },
+  {
+    name: "login",
+    type: "button",
+    labelTitle: "Login",
+    text: "Login",
+    link: "/login",
+    title: "Go to login",
+  },
+];

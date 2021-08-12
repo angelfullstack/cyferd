@@ -1,14 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
-import { variables } from "./assets/styled/styled";
-import "typeface-montserrat";
-import Routes from "./Routes/Routes";
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
+import { variables } from './assets/styled/styled';
+import 'typeface-montserrat';
+import Routes from './Routes/Routes';
+import NavBar from  './components/UI/organisms/NavBar/NavBar'
 
 const App = (store) => {
   return (
     <React.Fragment>
       <GlobalStyle />
+      <NavBar></NavBar>
       <Router>{Routes()}</Router>
     </React.Fragment>
   );

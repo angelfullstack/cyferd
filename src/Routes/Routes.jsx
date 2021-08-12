@@ -18,7 +18,7 @@ const Routes = () => {
     return (
       <React.Fragment>
         <Switch>
-            <Route exact path="/" render={() => <div>Root</div>} />
+            <Route exact path="/"/>
             <Route excact path="/register" component={RegisterPage} />
             <Route exact path="/auth-things" render={() => checkUserAuth("/auth-things")}/>
             <Route path='*' component={NotFound} />

@@ -4,7 +4,7 @@ import Button from "../../atoms/Button/Button";
 import {
   RegisterInputs,
   RegisterButton,
-} from "../../../../constants/FormsConstants";
+} from "../../../../constants/constants";
 import FormControl from "../../molecules/FormControl/FormControl";
 import { Styled, variables } from "../../../../assets/styled/styled";
 
@@ -34,7 +34,6 @@ let RegisterForm = () => {
   };
   return (
     <StyledRegisterForm
-      className="register-form"
       onSubmit={handleSubmit(onSubmit, onErrors)}
     >
       <div className="form-group">

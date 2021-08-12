@@ -1,10 +1,10 @@
 import React from "react";
 import RegisterForm from "./RegisterForm";
-import FormConstants from "../../../../constants/FormsConstants"
+import FormConstants from "../../../../constants/constants"
 import {
   RegisterInputs,
   RegisterButton,
-} from "../../../../constants/FormsConstants";
+} from "../../../../constants/constants";
 
 export default {
   title: "RegisterForm",
