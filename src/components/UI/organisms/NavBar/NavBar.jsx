@@ -57,13 +57,6 @@ button{
   color: ${variables.colorPrimary};
   margin: 0;
 }
-@media(max-width: 764px) {
-width:20rem;
-}
-@media(max-width: 394px) {
-width:15rem;
-}
-
 `;
 
 export default NavBar;
