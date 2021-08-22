@@ -3,10 +3,7 @@ import PropTypes from "prop-types";
 import { Styled, variables } from "../../../../assets/styled/styled";
 
 const Button = ({ type, text, onClick , link}) => {
-  onClick = () => {
-    console.log('Click')
-  }  
-  return (
+   return (
     <StyledButton type={type} onClick={onClick}>
       {link ? <a href={link}>{text}</a> : <span>{ text }</span>}
     </StyledButton>

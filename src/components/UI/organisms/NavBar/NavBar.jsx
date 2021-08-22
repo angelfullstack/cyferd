@@ -1,19 +1,11 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import Button from "../../atoms/Button/Button";
 import { NavBarUserButtons } from "../../../../constants/constants";
 import ImgButton from "../../molecules/ImgButton/ImgButton";
-import FormControl from "../../molecules/FormControl/FormControl";
 import { Styled, variables } from "../../../../assets/styled/styled";
 import img from "../../../../assets/img/logo.png"
 
 let NavBar = () => {
-  const onSubmit = (evt) => {
-    console.log(evt, "onsubmit");
-  };
-  const onErrors = (errors) => {
-    console.log(errors);
-  };
   const logo = {
     name: "logo",
     url: img,

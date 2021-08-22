@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import useForm from "../../../../containers/useForm"
 import Button from "../../atoms/Button/Button";
 import {
   RegisterInputs,
@@ -9,40 +9,30 @@ import FormControl from "../../molecules/FormControl/FormControl";
 import { Styled, variables } from "../../../../assets/styled/styled";
 
 let RegisterForm = () => {
-  const defaultValues = {
-    username: "",
-    password: "",
-    repeat_password: "",
-    birthDate: new Date(),
-    age: 0,
-    optin: false,
-  };
 
-  const {
-    handleSubmit,
-    // eslint-disable-next-line no-unused-vars
-    formState: { errors },
-  } = useForm();
-
-  const methods = useForm({ defaultValues });
-
-  const onSubmit = (evt) => {
-    console.log(evt, "onsubmit");
-  };
-  const onErrors = (errors) => {
-    console.log(errors);
-  };
+ const validations = {};
+  const { handleSubmit, handleChange, data, errors } = useForm({
+    validations:validations,
+    onSubmit: () => console.log('Submitted',data),
+  });
   return (
-    <StyledRegisterForm
-      onSubmit={handleSubmit(onSubmit, onErrors)}
-    >
+    <StyledRegisterForm onSubmit={handleSubmit}>
+      {errors.name && <p className="error">{errors.name}</p>}
       <div className="form-group">
         {RegisterInputs.map((props) => {
+          if(props.validations){
+            validations[props.formControlName] = props.validations
+
+          }
           return (
             <FormControl
               key={props.formControlName}
               {...props}
-              register={methods.register}
+              handleValue={handleChange(
+                props.formControlName,
+                props.handleValue
+              )}
+              errors = {errors[props.formControlName]}
             />
           );
         })}

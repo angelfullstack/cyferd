@@ -1,10 +1,7 @@
-import { useForm, useFormContext } from "react-hook-form";
 import PropTypes from "prop-types";
 import { Styled, variables } from "../../../../assets/styled/styled";
 export const ConnectForm = ({ children }) => {
-  const methods = useFormContext();
 
-  return children({ ...methods });
 };
 
 const Input = ({
@@ -14,27 +11,30 @@ const Input = ({
   placeholder,
   inputValue,
   required,
+  outputValue,
+  defaultValue,
+  validations
 }) => {
-  const {
-    register,
-    // formState: { errors },
-  } = useForm();
-
-  const onChange = (
+  const formatEvent = (
     (evt) => {
-      console.log(evt.target.value);
-    
+      // console.log(evt)
+      const obj = {
+        name: formControlName,
+        value: evt,
+        required: validations.required
+      }
+     return obj;
     }
-  );
+    );
   return (
+    
     <StyledInput
       type={type}
       className={formControlName}
       placeholder={placeholder}
       id={formControlName}
       name={formControlName}
-      onChange={onChange}
-      innerRef={register(formControlName, { required: "is required" })}
+      onChange={evt => outputValue(formatEvent(type !== 'checkbox' ? evt.target.value : evt.target.checked))}
     />
   );
 };

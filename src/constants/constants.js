@@ -4,8 +4,14 @@ export const RegisterInputs = [
     type: "text",
     placeholder: "Write your username",
     labelTitle: "Username",
-    defaultValue: "",
-    required: true,
+    defaultValue: null,
+    validations: {
+      required: true,
+      pattern: {
+        value: "^[A-Za-z]*$",
+        message: "You're not allowed to...",
+      },
+    },
   },
   {
     formControlName: "password",
@@ -13,23 +19,38 @@ export const RegisterInputs = [
     placeholder: "Write your password",
     labelTitle: "Password",
     defaultValue: "",
-    required: true,
+    validations: {
+      required: true,
+      custom: {
+        isValid: (value) => value.length > 6,
+        message: "The password needs to be at...",
+      },
+    },
   },
   {
     formControlName: "password_repeat",
     type: "password",
     placeholder: "Repeat your password",
     labelTitle: "Repeat your password",
-    defaultValue: "",
-    required: true,
+    defaultValue: null,
+    validations: {
+      required: true,
+      compare: {
+        isValid: (value, value2) => value === value2,
+        message: "Passwords should be equal",
+        compareTo: "password",
+      },
+    },
   },
   {
     formControlName: "birthdate",
     type: "date",
     placeholder: "../../...",
     labelTitle: "Birth date",
-    defaultValue: new Date(),
-    required: true,
+    defaultValue: null,
+    validations: {
+      required: true,
+    },
   },
   {
     formControlName: "age",
@@ -37,7 +58,25 @@ export const RegisterInputs = [
     placeholder: "33",
     labelTitle: "Your age",
     defaultValue: null,
-    required: true,
+    validations: {
+      required: true,
+      custom: {
+        isValid: (value) => parseInt(value, 10) > 17,
+        message: "You have to be at least 18 years old.",
+      },
+      compare: {
+        isValid: (age, birthdate) => {
+          const date = Math.abs(
+            new Date(
+              new Date().getFullYear() - new Date(birthdate).getFullYear()
+            )
+          );
+          return parseInt(age) === date;
+        },
+        message: "Age inconsistence",
+        compareTo: "birthdate",
+      },
+    },
   },
   {
     formControlName: "optin",
@@ -46,14 +85,16 @@ export const RegisterInputs = [
     linkText: " conditions",
     link: "/conditions",
     defaultValue: false,
-    required: true,
+    validations: {
+      required: true,
+    },
   },
 ];
 
 export const RegisterButton = {
-    type: "submit",
-    text: "Submit"
-}
+  type: "submit",
+  text: "Submit",
+};
 
 export const NavBarUserButtons = [
   {
@@ -73,3 +114,39 @@ export const NavBarUserButtons = [
     title: "Go to login",
   },
 ];
+// validations: {
+//   username: {
+//     pattern: {
+//       value: "^[A-Za-z]*$",
+//       message: "You're not allowed to...",
+//     },
+//   },
+//   age: {
+//     required: {
+//       message: "This field is required",
+//     },
+//     custom: {
+//       isValid: (value) => parseInt(value, 10) > 17,
+//       message: "You have to be at least 18 years old.",
+//     },
+//   },
+//   password: {
+//     required: {
+//       message: "This field is required",
+//     },
+//     custom: {
+//       isValid: (value) => value.length > 6,
+//       message: "The password needs to be at...",
+//     },
+//   },
+//   password_repeat: {
+//     required: {
+//       message: "This field is required",
+//     },
+//     compare: {
+//       isValid: (value,value2) => value === value2,
+//       message: "Passwords should be equal",
+//       compareTo: 'password'
+//     },
+//   },
+// },

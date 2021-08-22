@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Input from "../../atoms/Input/Input";
 import InputLabel from "../../atoms/InputLabel/InputLabel";
+import Tooltip from "../../molecules/Tooltip/Tooltip";
 import { Styled, variables } from "../../../../assets/styled/styled";
 
 const FormControl = ({
@@ -11,55 +12,74 @@ const FormControl = ({
   labelTitle,
   linkText,
   link,
-  defaultValue
+  defaultValue,
+  handleValue,
+  errors,
+  validations
 }) => {
+
+
   return (
-        <StyledFormControl
-          className={`form-control ${formControlName}${type && " " + type}`}
-        >
+    <StyledFormControl
+      className={`form-control ${formControlName}${type && " " + type}`}
+    >
       {type !== "checkbox" ? (
-          <React.Fragment>
-              <InputLabel
-                formControlName={formControlName}
-                labelTitle={labelTitle}
-                type={type}
-              />
-              <Input
-                formControlName={formControlName}
-                type={type}
-                placeholder={placeholder}
-              />
-          </React.Fragment>
+        <React.Fragment>
+          <InputLabel
+            formControlName={formControlName}
+            labelTitle={labelTitle}
+            type={type}
+            errors={errors}
+            defaultValue={defaultValue}
+          />
+          <Input
+            formControlName={formControlName}
+            type={type}
+            placeholder={placeholder}
+            value={defaultValue}
+            outputValue={handleValue}
+            validations={validations}
+          />
+          {errors && errors.validation && (
+            <Tooltip message={errors.validation}></Tooltip>
+          )}
+        </React.Fragment>
       ) : (
-          <React.Fragment>
-              <Input
-                formControlName={formControlName}
-                type={type}
-                placeholder={placeholder}
-              />
-              <InputLabel
-                formControlName={formControlName}
-                labelTitle={labelTitle}
-                type={type}
-                className={type}
-                link={link}
-                linkText={linkText}
-              />
-          </React.Fragment>
+        <React.Fragment>
+          <Input
+            formControlName={formControlName}
+            type={type}
+            placeholder={placeholder}
+            value={defaultValue}
+            outputValue={handleValue}
+            validations={validations}
+          />
+          <InputLabel
+            formControlName={formControlName}
+            labelTitle={labelTitle}
+            type={type}
+            errors={errors}
+            className={type}
+            link={link}
+            linkText={linkText}
+          />
+        </React.Fragment>
       )}
-        </StyledFormControl>
+    </StyledFormControl>
   );
 };
 
 const StyledFormControl = Styled.div`
 width:100%;
 margin-bottom: 1em;
+position:relative;
 &.checkbox {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items:center;
     input{
+      position:relative;
         display: none;
         visibility: hidden;
         &:checked ~ label.checkbox::after {

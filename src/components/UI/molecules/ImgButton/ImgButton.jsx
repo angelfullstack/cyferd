@@ -1,8 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import {Link, Router} from "react-router-dom";
-import Button from "../../atoms/Button/Button";
-import { Styled, variables } from "../../../../assets/styled/styled";
+// import PropTypes from "prop-types";
+import { Styled } from "../../../../assets/styled/styled";
 
 const ImgButton = ({
   name,
@@ -10,7 +8,6 @@ const ImgButton = ({
   link,
   title
 }) => {
-  console.log(url)
   return (
         <StyledImgButton>
             <a href={link}><img src={url} alt={title}></img></a>
@@ -34,18 +31,18 @@ img{
 
 `;
 
-ImgButton.propTypes = {
-  name: PropTypes.string,
-  url: PropTypes.string,
-  link: PropTypes.string,
-  title: PropTypes.string,
-};
+// ImgButton.propTypes = {
+//   name: PropTypes.string,
+//   url: PropTypes.string,
+//   link: PropTypes.string,
+//   title: PropTypes.string,
+// };
 
-ImgButton.defaultTypes = {
-  name: "img-button",
-  url: "/",
-  link: "/",
-  title: "Dummy img-button",
-};
+// ImgButton.defaultTypes = {
+//   name: "img-button",
+//   url: "/",
+//   link: "/",
+//   title: "Dummy img-button",
+// };
 
 export default ImgButton;

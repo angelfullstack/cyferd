@@ -3,12 +3,15 @@ import PropTypes from "prop-types";
 import { Styled, variables } from "../../../../assets/styled/styled";
 import  Legend from '../Legend/Legend';
 
-const InputLabel = ({ formControlName, type, labelTitle, linkText, link }) => {
+const InputLabel = ({ formControlName, type, labelTitle, linkText, link, defaultValue, errors }) => {
   return (
     <React.Fragment>
       {type !== "checkbox" ? (
         <StyledLabel htmlFor={formControlName} className={formControlName}>
           {labelTitle}
+          {!defaultValue && errors && errors.required && (
+            <span className="errors">{errors.required}</span>
+          )}
         </StyledLabel>
       ) : (
         <React.Fragment>
@@ -22,6 +25,7 @@ const InputLabel = ({ formControlName, type, labelTitle, linkText, link }) => {
             labelTitle={labelTitle}
             linkText={linkText}
             link={link}
+            errors={errors}
           ></Legend>
         </React.Fragment>
       )}
@@ -33,6 +37,11 @@ const StyledLabel = Styled.label`
 font-size: ${variables.fontSizeCow};
 color: ${variables.colorWhite};
 display: block;
+.errors{
+  color:${variables.colorDanger};
+  margin-left: 1rem;
+  font-size: .81em;
+}
 &:not(.checkbox){
 margin-bottom: .2em;
 }
