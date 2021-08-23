@@ -30,19 +30,37 @@ export const useForm = (options) => {
         if (required && !value) {
           // console.log("required", key);
           valid = false;
-          newErrors[key].required = "required field"
+          newErrors[key].required = "required field";
         } else if (value) {
-          const pattern = validation?.pattern;
-          if (pattern?.value && !RegExp(pattern.value).test(value)) {
-            valid = false;
-            newErrors[key].validation = pattern.message;
-          }
+          // const pattern = validation?.pattern;
+          // if (pattern?.value && !RegExp(pattern.value).test(value)) {
+          //   valid = false;
+          //   newErrors[key].validation = pattern.message;
+          // }
 
-          const custom = validation?.custom;
-          if (custom?.isValid && !custom.isValid(value)) {
-            valid = false;
-            newErrors[key].validation = custom.message;
-          }
+          const patternValidationResult = patternValidation(value, validation, valid);
+          valid = patternValidationResult.valid;
+          newErrors[key].validation =
+            !valid && patternValidationResult.message
+              ? patternValidationResult.message
+              : newErrors[key].validation;
+
+            console.log(valid, newErrors[key].validation);
+          // const custom = validation?.custom;
+          // if (custom?.isValid && !custom.isValid(value)) {
+          //   valid = false;
+          //   newErrors[key].validation = custom.message;
+          // }
+
+          const customValidationResult = customValidation(value, validation,valid);
+          valid = customValidationResult.valid;
+          newErrors[key].validation =
+            !valid && customValidationResult.message
+              ? customValidationResult.message
+              : newErrors[key].validation;
+                        console.log(valid, newErrors[key].validation);
+
+
           const compare = validation.compare ? validation.compare : null;
           const compareTo =
             compare && data[compare.compareTo]?.value
@@ -52,7 +70,7 @@ export const useForm = (options) => {
             valid = false;
             newErrors[key].validation = compare.message;
             // console.log(compare.message);
-          } 
+          }
         }
       }
 
@@ -68,6 +86,34 @@ export const useForm = (options) => {
       options.onSubmit();
     }
   };
+
+  const patternValidation = (value, validation, valid) => {
+    const pattern = validation?.pattern;
+    if (pattern?.value && !RegExp(pattern.value).test(value)) {
+      return {
+        valid: false,
+        message: pattern.message,
+      };
+    } else {
+      return { valid: valid };
+    }
+  };
+
+  const customValidation = (value, validation, valid) => {
+    const custom = validation?.custom;
+    if (custom?.isValid && !custom.isValid(value)) {
+      return {
+        valid: false,
+        message: custom.message,
+      };
+    } else {
+      return { valid: valid };
+    }
+  };
+
+  const compareValidation = (value, validation) => {};
+
+  const fds = () => {};
 
   return {
     data,

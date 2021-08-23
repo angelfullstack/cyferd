@@ -38,7 +38,8 @@ font-size: ${variables.fontSizeCow};
 color: ${variables.colorWhite};
 display: block;
 .errors{
-  color:${variables.colorDanger};
+  color:${variables.colorWhite};
+  background-color: ${variables.colorDanger};
   margin-left: 1rem;
   font-size: .81em;
 }

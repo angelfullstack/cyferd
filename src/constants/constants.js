@@ -9,7 +9,7 @@ export const RegisterInputs = [
       required: true,
       pattern: {
         value: "^[A-Za-z]*$",
-        message: "You're not allowed to...",
+        message: "You're not allowed to use numbers or symbols",
       },
     },
   },
@@ -23,7 +23,7 @@ export const RegisterInputs = [
       required: true,
       custom: {
         isValid: (value) => value.length > 6,
-        message: "The password needs to be at...",
+        message: "The password needs to be at least 6 characters long",
       },
     },
   },
@@ -31,7 +31,7 @@ export const RegisterInputs = [
     formControlName: "password_repeat",
     type: "password",
     placeholder: "Repeat your password",
-    labelTitle: "Repeat your password",
+    labelTitle: "Password repeat",
     defaultValue: null,
     validations: {
       required: true,
